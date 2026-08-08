@@ -1,4 +1,22 @@
+<p align="center">
+  <img src="Docs/banner.png" alt="Letopis Logo" width="600"/>
+</p>
+
+<p align="center">
+  <a href="https://www.python.org/downloads/">
+    <img src="https://img.shields.io/badge/Python-3.9%2B-3776AB.svg?logo=python&amp;logoColor=white" alt="Python 3.9+"/>
+  </a>
+  <a href="scripts/newsfetch.py">
+    <img src="https://img.shields.io/badge/feeds-RSS%20%7C%20Atom%20%7C%20RDF-orange.svg" alt="RSS, Atom and RDF feeds"/>
+  </a>
+  <a href="news_result/">
+    <img src="https://img.shields.io/badge/reports-Markdown-000000.svg?logo=markdown&amp;logoColor=white" alt="Markdown reports"/>
+  </a>
+</p>
+
 # Weekly News
+
+Репозиторий содержит воспроизводимый процесс подготовки еженедельного научно-технического дайджеста. Он нужен, чтобы запускать один и тот же сценарий локально или через подключённый GitHub-репозиторий, исключать уже просмотренные материалы и сохранять готовые Markdown-отчёты, которыми можно делиться по ссылке.
 
 Инструкции еженедельного отчёта находятся в [`news/head.md`](news/head.md), постоянный реестр просмотренных материалов — в [`news/seen.md`](news/seen.md).
 
