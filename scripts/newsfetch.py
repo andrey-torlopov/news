@@ -50,7 +50,10 @@ SOURCE_DOMAINS = {
     "osf.io",
 }
 CHALLENGE_PATTERN = re.compile(
-    br"just a moment|attention required|challenge-platform|captcha", re.I
+    "just a moment|attention required|challenge-platform|Проверка браузера".encode(
+        "utf-8"
+    ),
+    re.I,
 )
 COMPRESSION_ERROR_PATTERN = re.compile(
     r"content encoding|unrecognized.*encoding|decompress|brotli|compressed", re.I
