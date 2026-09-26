@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="Docs/banner.png" alt="Letopis Logo" width="600"/>
+  <img src="Docs/banner.png" alt="Weekly News" width="600"/>
 </p>
 
 <p align="center">
@@ -9,22 +9,24 @@
   <a href="scripts/newsfetch.py">
     <img src="https://img.shields.io/badge/feeds-RSS%20%7C%20Atom%20%7C%20RDF-orange.svg" alt="RSS, Atom and RDF feeds"/>
   </a>
-  <a href="news_result/">
+  <a href="results/">
     <img src="https://img.shields.io/badge/reports-Markdown-000000.svg?logo=markdown&amp;logoColor=white" alt="Markdown reports"/>
   </a>
 </p>
 
 # Weekly News
 
-Репозиторий содержит воспроизводимый процесс подготовки еженедельного научно-технического дайджеста. Он нужен, чтобы запускать один и тот же сценарий локально или через подключённый GitHub-репозиторий, исключать уже просмотренные материалы и сохранять готовые Markdown-отчёты, которыми можно делиться по ссылке.
+Read this in other languages: [Русский](README-ru.md)
 
-Инструкции еженедельного отчёта находятся в [`news/head.md`](news/head.md), постоянный реестр просмотренных материалов — в [`news/history.md`](news/history.md), история изменений — в [`Docs/CHANGELOG.md`](Docs/CHANGELOG.md).
+This repository provides a reproducible workflow for preparing a weekly science and technology digest. It lets you run the same process locally or through a connected GitHub repository, exclude previously reviewed material, and save finished Markdown reports that can be shared by link.
 
-## Загрузчик
+The weekly report instructions are in [`news/head.md`](news/head.md), the persistent record of reviewed material is in [`news/history.md`](news/history.md), and the changelog is in [`Docs/CHANGELOG.md`](Docs/CHANGELOG.md).
 
-[`scripts/newsfetch.py`](scripts/newsfetch.py) загружает RSS/Atom/RDF-ленты и страницы статей сырыми байтами, а наружу выводит компактный JSONL. Скрипт не выбирает новости и не изменяет `history.md`.
+## Fetcher
 
-Требования: Python 3.9+ и `curl` в `PATH`.
+[`scripts/newsfetch.py`](scripts/newsfetch.py) fetches RSS/Atom/RDF feeds and article pages as raw bytes and outputs compact JSONL. The script does not select news items or modify `history.md`.
+
+Requirements: Python 3.9+ and `curl` in `PATH`.
 
 ```bash
 python3 scripts/newsfetch.py --version
@@ -32,11 +34,11 @@ python3 scripts/newsfetch.py feeds --date 2026-08-08 --period 7 < feeds.tsv
 python3 scripts/newsfetch.py pages --text 1500 < urls.tsv
 ```
 
-Вход `feeds`: `<slug>\t<name>\t<url>\t<tier>`. Вход `pages`: `<key>\t<url>`. Каждая выходная строка содержит JSON-объект с полем `kind`: `DIAG`, `ITEM`, `PAGE` или `ERROR`.
+Input for `feeds`: `<slug>\t<name>\t<url>\t<tier>`. Input for `pages`: `<key>\t<url>`. Each output line contains a JSON object with a `kind` field: `DIAG`, `ITEM`, `PAGE`, or `ERROR`.
 
-## Проверка
+## Testing
 
-Тесты не обращаются к сети:
+The tests do not access the network:
 
 ```bash
 python3 -m unittest discover -s tests -v
